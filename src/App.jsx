@@ -30,35 +30,53 @@ function App() {
         <h2 className=" mt-5 text-center text-4xl font-bold max-sm:text-xl">Frontend Developer</h2>
         <p className=" text-center text-sm max-sm:text-[8px]">Building Web Applications, Brands and products</p>
         <div className="w-[17rem] mt-2 mb-2 bg-black h-[1px] max-sm:w-[9rem]"></div>
-        <button className=" bg-black text-white px-6 py-4 rounded-lg mt-3 max-sm:px-3 max-sm:py-2 max-sm:text-[12px]">Download CV 🡥</button>
+        <button className=" bg-black hover:bg-white hover:text-black hover:border hover:border-black text-white px-6 py-4 rounded-lg mt-3 max-sm:px-3 max-sm:py-2 max-sm:text-[12px]">Download CV <i class="fa-solid fa-arrow-down"></i></button>
       </div>
      </div>
 
      <div className="bg-white mt-4 flex items-center flex-col">
 
-        <div className="border border-black text-center py-3 px-4 max-sm:py-1 max-sm:px-2 mb-4">
+        <div className="border mb-14 border-black text-center py-3 px-4 max-sm:py-1 max-sm:px-2 mb-4">
           <h2 className=" font-medium max-sm:text-sm text-xl">Tech-Stacks</h2>
         </div>
 
         <div className="flex items-center w-full px-20 max-sm:px-10 justify-between">
-              <div className="w-20 max-sm:w-10 max-sm-w-10 h-20">
-                <img src="https://i.ibb.co/5RR24N1/image.png" className="w-fit h-fit" alt="image" />
-              </div>
-              <div className="w-20 max-sm:w-10 max-sm-w-10 h-20">
-                <img src="https://i.ibb.co/XVPncxs/image.png" alt="image" />
-              </div>
-              <div className="w-20 max-sm:w-10 max-sm-w-10 h-20">
-                <img src="https://i.ibb.co/CvNh4GM/image.png" alt="image" />
-              </div>
-              <div className="w-20 max-sm:w-10 max-sm-w-10 h-20">
-                <img src="https://i.ibb.co/BtTS84X/image.png" alt="image" />
-              </div>
-              <div className="w-20 max-sm:w-10 max-sm-w-10 h-20">
-                <img src="https://i.ibb.co/7pNjzKm/image.png" alt="image" />
-              </div>
-              <div className="w-20 max-sm:w-10 max-sm-w-10 h-20">
-              <img src="https://i.ibb.co/8z8xFN6/image.png" alt="image" />
-              </div>
+          <div className="flex flex-col items-center justify-center">
+            <i class="cursor-pointer hover:text-blue-900 text-6xl max-sm:text-2xl fa-brands fa-react"></i>
+            <h2 className="max-sm:text-[7px]">React Js</h2>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <i class="cursor-pointer hover:text-yellow-500 text-6xl max-sm:text-2xl fa-brands fa-js-square"></i>
+            <h2 className="max-sm:text-[7px]">JavaScript</h2>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+                <i class="cursor-pointer hover:text-orange-600 text-6xl max-sm:text-2xl fa-brands fa-html5"></i>
+                <h2 className="max-sm:text-[7px]">HTML</h2>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+                <i class="cursor-pointer hover:text-blue-500 text-6xl max-sm:text-2xl fa-brands fa-css3-alt"></i>
+                <h2 className="max-sm:text-[7px]">CSS</h2>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+                <i class="cursor-pointer hover:text-green-500 text-6xl max-sm:text-2xl fa-brands fa-node-js"></i>
+                <h2 className="max-sm:text-[7px]">Node Js</h2>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+                <i class="cursor-pointer hover:text-pink-400 text-6xl max-sm:text-2xl fa-brands fa-sass"></i>
+                <h2 className="max-sm:text-[7px]">Sass</h2>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+                <i class="cursor-pointer hover:text-blue-500 text-6xl max-sm:text-2xl fa-brands fa-bootstrap"></i>
+                <h2 className="max-sm:text-[7px]">Bootstrap</h2>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+                <i class="cursor-pointer hover:text-yellow-500 text-6xl max-sm:text-2xl fa-brands fa-github"></i>
+                <h2 className="max-sm:text-[7px]">GitHub</h2>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+                <i class="cursor-pointer hover:text-[#6860FF] text-6xl max-sm:text-2xl fa-brands fa-stripe"></i>
+                <h2 className="max-sm:text-[7px]">Stripe</h2>
+          </div>
         </div>
      </div>
 
@@ -109,11 +127,11 @@ function App() {
       <div className="flex flex-col items-center mb-20">
         <h2 className="text-4xl max-sm:text-lg text-center mt-4 mb-4">Hire Me As <br /> A Frontend Engineer</h2>
         <div className="flex flex-row gap-4 mt-4 max-sm:mt-2">
-            <div className=" flex flex-row max-sm:text-xs items-baseline w-fit gap-2 text-center justify-center cursor-pointer bg-black text-white px-4 py-2 rounded-full">
+            <div className=" flex flex-row max-sm:text-xs items-baseline w-fit gap-2 text-center justify-center cursor-pointer bg-white text-black hover:bg-[#DD4B3E] hover:text-white border  px-4 py-2 rounded-full">
               <i className="fa-regular fa-envelope"></i>
                <p>Email</p>
             </div>
-            <div className=" flex flex-row max-sm:text-xs items-baseline w-fit gap-2 text-center justify-center cursor-pointer bg-white text-black border px-4 py-2 rounded-full">
+            <div className=" flex flex-row max-sm:text-xs items-baseline w-fit gap-2 text-center justify-center cursor-pointer hover:bg-blue-500 hover:text-white bg-white text-black border px-4 py-2 rounded-full">
               <i class="fa-solid fa-phone"></i>
                <p>Phone</p>
             </div>
