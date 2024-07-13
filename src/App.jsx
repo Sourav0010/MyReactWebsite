@@ -1,6 +1,9 @@
+import { NavLink } from "react-router-dom"
+
 function App() {
   return (
     <>
+    {/* Header Section */}
      <div className=" bg-[#F0EFEE] flex flex-col p-9 font-regular rounded-b-[6rem] max-sm:rounded-b-[2rem]">
       <div className="flex items-center w-full justify-between visible max-sm:invisible">
          <div className=" flex gap-3 items-center">
@@ -33,6 +36,8 @@ function App() {
         <button className=" bg-black hover:bg-white hover:text-black hover:border hover:border-black text-white px-6 py-4 rounded-lg mt-3 max-sm:px-3 max-sm:py-2 max-sm:text-[12px]">Download CV <i class="fa-solid fa-arrow-down"></i></button>
       </div>
      </div>
+
+     {/* Tech Stack Section */}
 
      <div className="bg-white mt-4 flex items-center flex-col">
 
@@ -80,9 +85,15 @@ function App() {
         </div>
      </div>
 
+     {/* What I Do Section */}
+
     <div className="bg-[#F0EFEE] max-sm:mt-10 max-sm:rounded-[2rem]  mt-20 pb-20 rounded-[6rem]">
         <div className="p-20">
           <h2 className="text-center text-4xl max-sm:text-lg  font-bold">Collaborating with agencies <br></br> and brands for impactful outcome </h2>
+        </div>
+
+        <div className="flex flex-col items-center mb-16">
+          <NavLink to="/projects" className="bg-black text-white px-4 py-2 text-xl rounded-md">Projects <i class="fa-solid fa-code"></i></NavLink>
         </div>
 
         <div className="w-full relative ">
@@ -118,7 +129,9 @@ function App() {
         </div>
         </div>
     </div>
+        
 
+        {/* Contact Section */}
     <div className="mt-20 flex flex-col items-center">
       <div className="bg-[#EEEDEC] w-[4rem] h-[4rem]  flex items-center justify-center rounded-full">
         <i className="text-2xl fa-regular fa-handshake"></i>
