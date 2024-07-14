@@ -155,7 +155,7 @@ function App() {
 
       <div className="flex items-center flex-wrap-reverse max-sm:text-center justify-between max-sm:justify-center max-sm:gap-2 max-sm:text-sm w-full px-20 mt-9 mb-9">
         <p><i className="fa-regular fa-copyright"></i> @Sourav Mohanty | 2024</p>
-        <p><a href="">linkedin</a> / <a href="">LeetCode</a> / <a href="">Github</a></p>
+        <p><a href="https://www.linkedin.com/in/sourav-mohanty-link/">linkedin</a> / <a href="https://leetcode.com/u/Sourav010/">LeetCode</a> / <a href="https://github.com/Sourav0010">Github</a></p>
       </div>
     </div>
 
