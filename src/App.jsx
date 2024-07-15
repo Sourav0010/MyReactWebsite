@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { NavLink,Link } from "react-router-dom"
 
 function App() {
   return (
@@ -33,7 +33,7 @@ function App() {
         <h2 className=" mt-5 text-center text-4xl font-bold max-sm:text-xl">Frontend Developer</h2>
         <p className=" text-center text-sm max-sm:text-[8px]">Building Web Applications, Brands and products</p>
         <div className="w-[17rem] mt-2 mb-2 bg-black h-[1px] max-sm:w-[9rem]"></div>
-        <button className=" bg-black hover:bg-white hover:text-black hover:border hover:border-black text-white px-6 py-4 rounded-lg mt-3 max-sm:px-3 max-sm:py-2 max-sm:text-[12px]">Download CV <i class="fa-solid fa-arrow-down"></i></button>
+        <Link className=" bg-black hover:bg-white hover:text-black hover:border border border-black hover:border-black text-white px-6 py-4 rounded-lg mt-3 max-sm:px-3 max-sm:py-2 max-sm:text-[12px]" to={"https://drive.google.com/file/d/1Ng7-GkETh3iiS95CNoOBt1woxlx8Yuge/view?usp=drivesdk"}>Download CV <i class="fa-solid fa-arrow-down"></i></Link>
       </div>
      </div>
 
@@ -89,12 +89,9 @@ function App() {
 
     <div className="bg-[#F0EFEE] max-sm:mt-10 max-sm:rounded-[2rem]  mt-20 pb-20 rounded-[6rem]">
         <div className="p-20">
-          <h2 className="text-center text-4xl max-sm:text-lg  font-bold">Collaborating with agencies <br></br> and brands for impactful outcome </h2>
+          <h2 className="text-center text-4xl max-sm:text-lg m-auto max-w-[30rem] font-bold">Collaborating with agencies  and brands for impactful outcome </h2>
         </div>
 
-        <div className="flex flex-col items-center mb-16">
-          <NavLink to="/projects" className="bg-black text-white px-4 py-2 text-xl rounded-md">Projects <i class="fa-solid fa-code"></i></NavLink>
-        </div>
 
         <div className="w-full relative ">
         <div className=" bg-slate-700 h-[1px] w-[90%] m-auto"></div>
@@ -140,15 +137,27 @@ function App() {
       <div className="flex flex-col items-center mb-20">
         <h2 className="text-4xl max-sm:text-lg text-center mt-4 mb-4">Hire Me As <br /> A Frontend Engineer</h2>
         <div className="flex flex-row gap-4 mt-4 max-sm:mt-2">
-            <div className=" flex flex-row max-sm:text-xs items-baseline w-fit gap-2 text-center justify-center cursor-pointer bg-white text-black hover:bg-[#DD4B3E] hover:text-white border  px-4 py-2 rounded-full">
+            <button className=" flex flex-row max-sm:text-xs items-baseline w-fit gap-2 text-center justify-center cursor-pointer bg-white text-black hover:bg-[#DD4B3E] hover:text-white border  px-4 py-2 rounded-full" onClick={(e)=>{
+              e.preventDefault();
+              e.stopPropagation();
+              window.navigator.clipboard.writeText("mohantysourav656@gmail.com")
+            }}>
               <i className="fa-regular fa-envelope"></i>
                <p>Email</p>
-            </div>
-            <div className=" flex flex-row max-sm:text-xs items-baseline w-fit gap-2 text-center justify-center cursor-pointer hover:bg-blue-500 hover:text-white bg-white text-black border px-4 py-2 rounded-full">
+            </button>
+            <button className=" flex flex-row max-sm:text-xs items-baseline w-fit gap-2 text-center justify-center cursor-pointer hover:bg-blue-500 hover:text-white bg-white text-black border px-4 py-2 rounded-full" onClick={(e)=>{
+              e.preventDefault();
+              e.stopPropagation();
+              window.navigator.clipboard.writeText("+91 ")
+            }}>
               <i class="fa-solid fa-phone"></i>
                <p>Phone</p>
-            </div>
+            </button>
+             <button className=" flex flex-row max-sm:text-xs items-baseline w-fit gap-2 text-center justify-center cursor-pointer bg-white text-black hover:bg-[#5a5a5a] hover:text-white border  px-4 py-2 rounded-full">
+          <NavLink to="/projects">My Projects <i class="fa-solid fa-code"></i></NavLink>
+        </button>
         </div>
+       
       </div>
       <div className=" bg-slate-700 h-[1px] w-[90%] m-auto"></div>
 
