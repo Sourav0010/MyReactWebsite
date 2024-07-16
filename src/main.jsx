@@ -6,7 +6,6 @@ import { createBrowserRouter,  RouterProvider } from 'react-router-dom'
 import Projects from './components/Projects.jsx'
 import Layout from './Layouts/Layout.jsx'
 import Currencyconverter from './components/Currencyconverter.jsx'
-import Layout2 from './Layouts/Layout2.jsx'
 
 
 
@@ -20,7 +19,7 @@ const router = createBrowserRouter([
         element: <App/>
       },{
         path: 'projects',
-        element: <Layout2/>,
+        element: <Layout/>,
         children:[
           {
             path: '',
