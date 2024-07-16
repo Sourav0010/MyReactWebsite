@@ -27,13 +27,16 @@ function Currencyconverter() {
   
   return (
     <div className='dark:bg-slate-900 max-sm:h-screen h-screen dark:text-white'>
-    <Link to={'/projects'}>
-            <i className="fa-solid fa-arrow-left bg-black text-white px-4 py-2 rounded-md ml-5 mt-4 cursor-pointer"></i>
-    </Link>
+    <div className='bg-[#F0EFEE] dark:bg-slate-800 dark:text-white flex flex-col max-sm:p-6 max-sm:text-xs p-9 max-sm:p-5 font-regular rounded-b-[6rem] max-sm:rounded-b-[2rem]'>
+         <Link to={'/'}>
+            <i className="fa-solid fa-arrow-left dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-md ml-5 mt-4 max-sm:mt-2 max-sm:ml-2 cursor-pointer"></i>
+        </Link>
+        <div className=' flex flex-col items-center justify-center'>
+            <h2 className=' border border-black dark:border-white max-sm:px-3 max-sm:py-1  px-6 py-3 font-medium'>Currency Converter</h2>
+        </div>
+    </div>
     
     <div className='flex flex-col px-48 max-md:px-12 max-sm:px-4 mt-8 items-center justify-center'>
-      <h1 className='text-3xl font-medium'>Currency Converter</h1>
-
       <div className=' px-20 py-10 max-md:px-5 max-md:py-6 max-sm:px-4 max-sm:py-3 w-full flex items-center justify-center flex-col dark:bg-slate-800 bg-[#F0EFEE] rounded-lg mt-8'>
 
         <Input

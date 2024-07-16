@@ -170,7 +170,7 @@ function App() {
             <button className=" flex flex-row max-sm:text-xs items-baseline w-fit gap-2 text-center justify-center cursor-pointer dark:bg-gray-900 dark:text-white dark:hover:bg-blue-500 dark:border-none hover:bg-blue-500 hover:text-white bg-white text-black border px-4 py-2 rounded-full" onClick={(e)=>{
               e.preventDefault();
               e.stopPropagation();
-              window.navigator.clipboard.writeText("+91 ")
+              window.navigator.clipboard.writeText("+91 6370749833")
             }}>
               <i className="fa-solid fa-phone"></i>
                <p>Phone</p>
