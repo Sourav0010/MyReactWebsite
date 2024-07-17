@@ -1,6 +1,5 @@
-import React,{useEffect} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import getTheme  from '../context/Theme'
 function Projects() {
    
   return (
@@ -37,7 +36,7 @@ function Projects() {
             <h2 className='text-xl max-sm:text-base  font-medium'>Todo List</h2>
             <p className='max-sm:text-xs text-base w-60 max-sm:w-full'>Boost your productivity with our web-based Todo Manager!  This user-friendly app lets you create, organize, and track tasks with ease.</p>
             <div className='mt-4 flex items-center justify-center'>
-                <Link className='bg-black dark:bg-slate-900 text-white px-4 py-2 max-sm:px-3 max-sm:py-2 max-sm:text-xs max-sm:rounded-md'>Building <i className="fa-solid fa-industry"></i></Link>
+                <Link to={"/projects/todo-list"} className='bg-black dark:bg-slate-900 text-white px-4 py-2 max-sm:px-3 max-sm:py-2 max-sm:text-xs max-sm:rounded-md'>Visit Now  <i className="fa-solid fa-circle-arrow-up"></i></Link>
             </div>
         </div>
         
