@@ -6,7 +6,8 @@ import TodoForm from './todos-comp/TodoForm';
 function TodoList() {
 
    let [todos,setTodos] = useState(() =>{
-    let value = JSON.parse(localStorage.getItem('todos'));
+    let data = localStorage.getItem('todos')
+    let value = JSON.parse(data);
     if(!value) value = [];
     return value;
   });
