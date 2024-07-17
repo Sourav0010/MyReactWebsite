@@ -23,13 +23,13 @@ function Todo({todo}) {
   }
  
   return (
-    <div className='w-full flex dark:text-white justify-center'>
+    <div className='w-full max-sm:px-20 flex dark:text-white justify-center'>
             <div className={`items-center justify-center gap-4 ${!editMode?"border-blue-300":"border-red-600"} ${completed?"border-green-400":"border-blue-300"} border p-2 rounded-md w-fit flex flex-row`}>
 
               <input id="default-checkbox" type="checkbox" checked={completed} onChange={toggle}class="w-4 h-4 rounded-md text-slate-700 bg-gray-100 border-gray-300 rounded focus:ring-[#F0EFEE] dark:focus:ring-slate-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
 
               <input type="text" 
-              className={`dark:bg-slate-900 ${completed?"line-through text-gray-400":""} bg-white focus:outline-none w-auto  px-2 py-2  rounded-md ${editMode?'border border-red-600':'border-none'}`} 
+              className={`dark:bg-slate-900 ${completed?"line-through text-gray-400":""} bg-white focus:outline-none w-auto  p-2 max-sm:p-1  rounded-md ${editMode?'border border-red-600':'border-none'}`} 
               value={todoMsg} disabled={!editMode} onChange={(e)=>setTodoMsg(e.target.value)}/>
 
               

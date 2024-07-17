@@ -30,9 +30,11 @@ function TodoList() {
     localStorage.setItem('todos',JSON.stringify(todos));
   },[todos])
 
+ 
+
   return (
-    <TodoProvider value={{todos,addTodo,removeTodo,editTodo,toggleComplete}}>
-      <div className='w-full h-full  flex flex-col   dark:bg-slate-900'>
+    <TodoProvider  value={{todos,addTodo,removeTodo,editTodo,toggleComplete}}>
+      <div className='w-full h-screen  flex flex-col   dark:bg-slate-900'>
           <div className='bg-[#F0EFEE] dark:bg-slate-800 dark:text-white flex flex-col max-sm:p-6 max-sm:text-xs p-9 font-regular rounded-b-[6rem] max-sm:rounded-b-[2rem]'>
           <Link to={'/projects'}>
               <i className="fa-solid fa-arrow-left dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-md ml-5 mt-4 cursor-pointer"></i>
@@ -42,10 +44,19 @@ function TodoList() {
           </div>
           </div>
           <TodoForm/>
-          <div className='w-full h-full  mt-4 gap-2 flex flex-col'>
+          <div className='w-full overflow-y-scroll h-full   dark:bg-slate-900  mt-4 gap-2 flex flex-col'>
+
             {todos.map((todo)=><Todo key={todo.id} todo={todo}/>)}
+
+            
           </div>
+
+          <div className="flex  items-center flex-wrap-reverse max-sm:text-center justify-between max-sm:justify-center max-sm:gap-2 max-sm:text-sm w-full px-20 mt-9 dark:bg-slate-900 dark:text-white pb-4">
+            <p><i className="fa-regular fa-copyright"></i> @Sourav Mohanty | 2024</p>
+            <p><a href="https://www.linkedin.com/in/sourav-mohanty-link/">linkedin</a> / <a href="https://leetcode.com/u/Sourav010/">LeetCode</a> / <a href="https://github.com/Sourav0010">Github</a></p>
+            </div>
       </div>
+      
     </TodoProvider>
   )
 }

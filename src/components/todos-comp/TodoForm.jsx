@@ -18,7 +18,7 @@ function TodoForm() {
     <div className='w-full '>
           <form onSubmit={add}>
             <div className='flex flex-row items-center w-full gap-4 justify-center mt-14'>
-              <input type="text" className='dark:text-white dark:bg-slate-700 dark:border-slate-700 todo-val border  w-[20rem]  px-2 py-2 dark:outline-none  rounded-md'/>
+              <input type="text" className='dark:text-white dark:bg-slate-700 dark:border-slate-700 todo-val border  w-[20rem]  max-sm:w-[15rem] px-2 py-2 dark:outline-none  rounded-md'/>
               <button className='dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-md  cursor-pointer'>Add</button>
             </div>
           </form>
