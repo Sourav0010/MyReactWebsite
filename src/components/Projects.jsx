@@ -4,7 +4,7 @@ function Projects() {
    
   return (
     <>
-    <div className='w-full max-sm:h-full h-screen bg-white dark:bg-slate-900'>
+    <div className='w-full max-sm:h-full min-h-svh bg-white dark:bg-slate-900'>
     <div className='bg-[#F0EFEE] dark:bg-slate-800 dark:text-white flex flex-col max-sm:p-6 max-sm:text-xs p-9 font-regular rounded-b-[6rem] max-sm:rounded-b-[2rem]'>
          <Link to={'/'}>
             <i className="fa-solid fa-arrow-left dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-md ml-5 mt-4 cursor-pointer"></i>

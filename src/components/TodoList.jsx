@@ -5,16 +5,7 @@ import Todo from './todos-comp/Todo'
 import TodoForm from './todos-comp/TodoForm';
 function TodoList() {
 
-   let [todos,setTodos] = useState(() =>{
-    let data = localStorage.getItem('todos')
-    let value;
-    if(!data){
-      value = [];
-    }else{
-      value = JSON.parse(data);
-    }
-    return value;
-  });
+   let [todos,setTodos] = useState([]);
 
   const addTodo = (todo)=>{
     setTodos((prev)=> [...prev,todo]);
@@ -30,20 +21,17 @@ function TodoList() {
     setTodos((prev)=>prev.map((item)=>item.id===id?{...item,completed:!item.completed}:item));
   };
 
-  useEffect(()=>{
-    let data = localStorage.getItem('todos')
-    let value;
-    if(!data){
-      value = [];
-    }else{
-      value = JSON.parse(data);
-    }
-    setTodos(value);
-  },[])
+ useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem("todos"))
 
-  useEffect(()=>{
-    localStorage.setItem('todos',JSON.stringify(todos));
-  },[todos])
+    if (todos && todos.length > 0) {
+      setTodos(todos)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }, [todos])
 
  
 

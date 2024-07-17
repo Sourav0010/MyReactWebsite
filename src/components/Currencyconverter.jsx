@@ -26,9 +26,9 @@ function Currencyconverter() {
   }
   
   return (
-    <div className='dark:bg-slate-900 max-sm:h-screen h-screen dark:text-white'>
+    <div className='dark:bg-slate-900 min-h-svh dark:text-white'>
     <div className='bg-[#F0EFEE] dark:bg-slate-800 dark:text-white flex flex-col max-sm:p-6 max-sm:text-xs p-9 max-sm:p-5 font-regular rounded-b-[6rem] max-sm:rounded-b-[2rem]'>
-         <Link to={'/'}>
+         <Link to={'/projects'}>
             <i className="fa-solid fa-arrow-left dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-md ml-5 mt-4 max-sm:mt-2 max-sm:ml-2 cursor-pointer"></i>
         </Link>
         <div className=' flex flex-col items-center justify-center'>
@@ -59,7 +59,7 @@ function Currencyconverter() {
         <button className='mt-4 mb-4 bg-black dark:bg-slate-900 text-white px-6 py-3 rounded-md max-sm:px-3 max-sm:py-2 max-sm:text-xs max-md:text-base max-md:px-4 max-md:py-8' onClick={convert}>Convert <i className="fa-solid fa-shuffle"></i></button>
       </div>
 
-      <div className="flex items-center flex-wrap-reverse max-sm:text-center justify-between max-sm:justify-center max-sm:gap-2 max-sm:text-sm w-full px-20 mt-9 dark:bg-slate-900">
+      <div className="flex items-center flex-wrap-reverse max-sm:text-center justify-between max-sm:justify-center max-sm:gap-2 max-sm:text-sm w-full py-4 mt-9 dark:bg-slate-900">
         <p><i className="fa-regular fa-copyright"></i> @Sourav Mohanty | 2024</p>
         <p><a href="https://www.linkedin.com/in/sourav-mohanty-link/">linkedin</a> / <a href="https://leetcode.com/u/Sourav010/">LeetCode</a> / <a href="https://github.com/Sourav0010">Github</a></p>
       </div>
