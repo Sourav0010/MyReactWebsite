@@ -7,8 +7,12 @@ function TodoList() {
 
    let [todos,setTodos] = useState(() =>{
     let data = localStorage.getItem('todos')
-    let value = JSON.parse(data);
-    if(!value) value = [];
+    let value;
+    if(!data){
+      value = [];
+    }else{
+      value = JSON.parse(data);
+    }
     return value;
   });
 
@@ -27,7 +31,13 @@ function TodoList() {
   };
 
   useEffect(()=>{
-    let value = JSON.parse(localStorage.getItem('todos'));
+    let data = localStorage.getItem('todos')
+    let value;
+    if(!data){
+      value = [];
+    }else{
+      value = JSON.parse(data);
+    }
     setTodos(value);
   },[])
 
