@@ -5,7 +5,11 @@ import Todo from './todos-comp/Todo'
 import TodoForm from './todos-comp/TodoForm';
 function TodoList() {
 
-  let [todos,setTodos] = useState(() => JSON.parse(localStorage.getItem('todos')) || []);
+   let [todos,setTodos] = useState(() =>{
+    let value = JSON.parse(localStorage.getItem('todos'));
+    if(!value) value = [];
+    return value;
+  });
 
   const addTodo = (todo)=>{
     setTodos((prev)=> [...prev,todo]);
