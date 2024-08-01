@@ -55,7 +55,7 @@ function App() {
         <h2 className=" mt-5 text-center text-4xl font-bold max-sm:text-xl">Frontend Developer</h2>
         <p className=" text-center text-sm max-sm:text-[8px]">Building Web Applications, Brands and products</p>
         <div className="w-[17rem] mt-2 mb-2 bg-black dark:bg-white h-[1px] max-sm:w-[9rem]"></div>
-        <Link className=" bg-black hover:bg-white hover:text-black hover:border border border-black hover:border-black text-white px-6 py-4 rounded-lg mt-3 max-sm:px-3 max-sm:py-2 max-sm:text-[12px] dark:bg-slate-700 dark:hover:bg-slate-700 dark:hover:text-white dark:hover:border-white" to={"https://drive.google.com/file/d/1Ng7-GkETh3iiS95CNoOBt1woxlx8Yuge/view?usp=drivesdk"}>Download CV <i className="fa-solid fa-arrow-down"></i></Link>
+        <Link className=" bg-black hover:bg-white hover:text-black hover:border border border-black hover:border-black text-white px-6 py-4 rounded-lg mt-3 max-sm:px-3 max-sm:py-2 max-sm:text-[12px] dark:bg-slate-700 dark:hover:bg-slate-700 dark:hover:text-white dark:hover:border-white" to={"https://drive.google.com/file/d/11zrGMNfYR9x4bgEWfTrqL_Md7P7pVoTX/view?usp=drivesdk&usp=embed_facebook&usp=embed_facebook"}>Download CV <i className="fa-solid fa-arrow-down"></i></Link>
       </div>
      </div>
 

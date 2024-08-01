@@ -25,10 +25,10 @@ function Projects() {
         </div>
 
         <div className='max-sm:w-full w-fit bg-[#F0EFEE] dark:bg-slate-800 dark:text-white flex flex-col p-10 max-sm:p-10 gap-4 rounded-lg '>
-            <h2 className='text-xl max-sm:text-base  font-medium'>Weather Application</h2>
-            <p className='max-sm:text-xs text-base w-60 max-sm:w-full'>A weather web app is a web-based application that provides users with real-time and forecast weather information.</p>
+            <h2 className='text-xl max-sm:text-base  font-medium'>Web Logs</h2>
+            <p className='max-sm:text-xs text-base w-60 max-sm:w-full'>This project aimed to showcase the blogs on newly exposed technology though blogs and also user can able to create profile .</p>
             <div className='mt-4 flex items-center justify-center'>
-                <Link className='bg-black dark:bg-slate-900 text-white px-4 py-2 max-sm:px-3 max-sm:py-2 max-sm:text-xs max-sm:rounded-md'>Building <i className="fa-solid fa-industry"></i></Link>
+                <Link to="https://web-logs-blog.netlify.app/" className='bg-black dark:bg-slate-900 text-white px-4 py-2 max-sm:px-3 max-sm:py-2 max-sm:text-xs max-sm:rounded-md'>Visit Now  <i className="fa-solid fa-circle-arrow-up"></i></Link>
             </div>
         </div>
         
