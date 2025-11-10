@@ -1,7 +1,7 @@
 import { NavLink, Link } from 'react-router-dom';
 import getTheme from './context/Theme';
 import { useEffect } from 'react';
-import React from 'react';
+import { TECH_STACKS } from './constants';
 
 function App() {
    const { theme, toggleTheme } = getTheme();
@@ -64,7 +64,9 @@ function App() {
                         <img src='https://i.ibb.co/tCdPhPx/profile.jpg' />
                      </div>
                      <div className=' absolute top-0 right-0 dark:bg-slate-700  bg-white p-2 rounded-md top-0'>
-                        <p className='max-sm:text-[8px]'>Hi!👋 I'm Sourav </p>
+                        <p className='max-sm:text-[8px]'>
+                           Hi!👋 I&apos;m Sourav{' '}
+                        </p>
                      </div>
                   </div>
 
@@ -96,42 +98,15 @@ function App() {
                </div>
 
                <div className='flex items-center w-full px-20 max-sm:px-10 justify-between'>
-                  <div className='flex flex-col items-center justify-center'>
-                     <i className='cursor-pointer hover:text-blue-900 text-6xl max-sm:text-2xl fa-brands fa-react'></i>
-                     <h2 className='max-sm:text-[7px]'>React Js</h2>
-                  </div>
-                  <div className='flex flex-col items-center justify-center'>
-                     <i className='cursor-pointer hover:text-yellow-500 text-6xl max-sm:text-2xl fa-brands fa-js-square'></i>
-                     <h2 className='max-sm:text-[7px]'>JavaScript</h2>
-                  </div>
-                  <div className='flex flex-col items-center justify-center'>
-                     <i className='cursor-pointer hover:text-orange-600 text-6xl max-sm:text-2xl fa-brands fa-html5'></i>
-                     <h2 className='max-sm:text-[7px]'>HTML</h2>
-                  </div>
-                  <div className='flex flex-col items-center justify-center'>
-                     <i className='cursor-pointer hover:text-blue-500 text-6xl max-sm:text-2xl fa-brands fa-css3-alt'></i>
-                     <h2 className='max-sm:text-[7px]'>CSS</h2>
-                  </div>
-                  <div className='flex flex-col items-center justify-center'>
-                     <i className='cursor-pointer hover:text-green-500 text-6xl max-sm:text-2xl fa-brands fa-node-js'></i>
-                     <h2 className='max-sm:text-[7px]'>Node Js</h2>
-                  </div>
-                  <div className='flex flex-col items-center justify-center'>
-                     <i className='cursor-pointer hover:text-pink-400 text-6xl max-sm:text-2xl fa-brands fa-sass'></i>
-                     <h2 className='max-sm:text-[7px]'>Sass</h2>
-                  </div>
-                  <div className='flex flex-col items-center justify-center'>
-                     <i className='cursor-pointer hover:text-blue-500 text-6xl max-sm:text-2xl fa-brands fa-bootstrap'></i>
-                     <h2 className='max-sm:text-[7px]'>Bootstrap</h2>
-                  </div>
-                  <div className='flex flex-col items-center justify-center'>
-                     <i className='cursor-pointer hover:text-yellow-500 text-6xl max-sm:text-2xl fa-brands fa-github'></i>
-                     <h2 className='max-sm:text-[7px]'>GitHub</h2>
-                  </div>
-                  <div className='flex flex-col items-center justify-center'>
-                     <i className='cursor-pointer hover:text-[#6860FF] text-6xl max-sm:text-2xl fa-brands fa-stripe'></i>
-                     <h2 className='max-sm:text-[7px]'>Stripe</h2>
-                  </div>
+                  {TECH_STACKS.map((value, index) => (
+                     <div
+                        key={index}
+                        className='flex flex-col items-center justify-center'
+                     >
+                        {value.icon}
+                        <h2 className='max-sm:text-[7px]'>{value.type}</h2>
+                     </div>
+                  ))}
                </div>
             </div>
 
@@ -248,7 +223,7 @@ function App() {
                <div className='flex items-center flex-wrap-reverse max-sm:text-center justify-between max-sm:justify-center max-sm:gap-2 max-sm:text-sm w-full px-20 mt-9 pb-9'>
                   <p>
                      <i className='fa-regular fa-copyright'></i> @Sourav Mohanty
-                     | 2024
+                     | 2025
                   </p>
                   <p>
                      <a href='https://www.linkedin.com/in/sourav-mohanty-link/'>
