@@ -41,7 +41,7 @@ function TodoList() {
       >
          <div className='w-full h-screen  flex flex-col   dark:bg-slate-900'>
             <div className='bg-[#F0EFEE] dark:bg-slate-800 dark:text-white flex flex-col max-sm:p-6 max-sm:text-xs p-9 font-regular rounded-b-[6rem] max-sm:rounded-b-[2rem]'>
-               <Link to={'/projects'}>
+               <Link to={'..'}>
                   <i className='fa-solid fa-arrow-left dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-md ml-5 mt-4 cursor-pointer'></i>
                </Link>
                <div className=' flex flex-col items-center justify-center'>
@@ -60,7 +60,7 @@ function TodoList() {
             <div className='flex  items-center flex-wrap-reverse max-sm:text-center justify-between max-sm:justify-center max-sm:gap-2 max-sm:text-sm w-full px-20 mt-9 dark:bg-slate-900 dark:text-white pb-4'>
                <p>
                   <i className='fa-regular fa-copyright'></i> @Sourav Mohanty |
-                  2024
+                  2025
                </p>
                <p>
                   <a href='https://www.linkedin.com/in/sourav-mohanty-link/'>

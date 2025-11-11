@@ -1,7 +1,7 @@
 import { NavLink, Link } from 'react-router-dom';
 import getTheme from './context/Theme';
 import { useEffect } from 'react';
-import { TECH_STACKS } from './constants';
+import { SERVICES, TECH_STACKS } from './constants';
 
 function App() {
    const { theme, toggleTheme } = getTheme();
@@ -10,6 +10,18 @@ function App() {
       document.body.classList.remove('dark', 'light');
       document.body.classList.add(theme);
    }, [theme]);
+
+   const handleClick = (e) => {
+      window.navigator.clipboard.writeText('mohantysourav656@gmail.com');
+      e.target.innerText = 'Copied!';
+      e.target.style.backgroundColor = '#2bff00';
+      e.target.style.color = 'white';
+      setTimeout(() => {
+         e.target.style.backgroundColor = '';
+         e.target.innerText = 'Copy';
+         e.target.style.color = 'black';
+      }, 2000);
+   };
 
    return (
       <>
@@ -21,14 +33,7 @@ function App() {
                      <h3 className='text-xs'>mohantysourav656@gmail.com</h3>
                      <button
                         className='px-2 py-1 dark:bg-gray-800 bg-white text-xs rounded-md'
-                        onClick={(e) => {
-                           window.navigator.clipboard.writeText(
-                              'mohantysourav656@gmail.com'
-                           );
-                           e.target.innerText = 'Copied!';
-                           e.target.style.backgroundColor = '#2bff00';
-                           e.target.style.color = 'white';
-                        }}
+                        onClick={handleClick}
                      >
                         Copy
                      </button>
@@ -53,7 +58,7 @@ function App() {
                         />
                         <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#F0EFEE] dark:peer-focus:ring-slate-700 rounded-full peer dark:bg-white peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-slate-600"></div>
                         <span className='ms-3 text-sm font-medium text-gray-900 dark:text-gray-300'>
-                           Dark Theme
+                           {theme === 'dark' ? 'Light Mode' : `Dark Mode`}
                         </span>
                      </label>
                   </div>
@@ -63,7 +68,7 @@ function App() {
                      <div className=' m-auto  w-28 h-28 dark:border-white dark:border dark:border-4  rounded-full max-sm:w-16 max-sm:h-16 overflow-hidden'>
                         <img src='https://i.ibb.co/tCdPhPx/profile.jpg' />
                      </div>
-                     <div className=' absolute top-0 right-0 dark:bg-slate-700  bg-white p-2 rounded-md top-0'>
+                     <div className=' absolute right-0 dark:bg-slate-700  bg-white p-2 rounded-md top-0'>
                         <p className='max-sm:text-[8px]'>
                            Hi!👋 I&apos;m Sourav{' '}
                         </p>
@@ -91,7 +96,7 @@ function App() {
             {/* Tech Stack Section */}
 
             <div className='bg-white dark:bg-slate-800 dark:text-white mt-4 flex items-center flex-col'>
-               <div className='border mb-14 border-black dark:border-white text-center py-3 px-4 max-sm:py-1 max-sm:px-2 mb-4'>
+               <div className='border border-black dark:border-white text-center py-3 px-4 max-sm:py-1 max-sm:px-2 mb-4'>
                   <h2 className=' font-medium max-sm:text-sm text-xl'>
                      Tech-Stacks
                   </h2>
@@ -127,49 +132,18 @@ function App() {
                   </div>
 
                   <div className=' mt-20 flex-wrap px-20 max-sm:px-5 flex flex-row items-center justify-around'>
-                     <div className=' flex text-center flex-col w-[14rem] max-sm:w-[11rem] m-4 border border-gray-500 rounded-md p-4'>
-                        <i className='text-center max-sm:text-xl text-2xl fa-solid fa-paintbrush'></i>
-                        <h2 className='font-medium mt-2 max-sm:text-sm mb-2'>
-                           UX/UI
-                        </h2>
-                        <p className='max-sm:text-xs'>
-                           Designing interfaces that are reliable, profitable
-                           and easy to use.{' '}
-                        </p>
-                     </div>
-
-                     <div className=' flex text-center flex-col w-[14rem] m-4 max-sm:w-[11rem] border border-gray-500 rounded-md p-4'>
-                        <i className='text-center text-2xl max-sm:text-xl fa-solid fa-laptop'></i>
-                        <h2 className='font-medium mt-2 max-sm:text-sm mb-2'>
-                           Web & Mobile Apps
-                        </h2>
-                        <p className='max-sm:text-xs'>
-                           Migrating ideas into real world web and mobile
-                           applications.{' '}
-                        </p>
-                     </div>
-
-                     <div className=' flex text-center flex-col w-[14rem] max-sm:w-[11rem] m-4 border border-gray-500 rounded-md p-4'>
-                        <i className='text-center text-2xl max-sm:text-xl fa-solid fa-paint-roller'></i>
-                        <h2 className='font-medium mt-2 max-sm:text-sm mb-2'>
-                           Design & Creative
-                        </h2>
-                        <p className='max-sm:text-xs'>
-                           Painting stunning designs which connects you with
-                           your costumers.
-                        </p>
-                     </div>
-
-                     <div className=' flex flex-col text-center w-[14rem] max-sm:w-[11rem] m-4 border border-gray-500 rounded-md p-4'>
-                        <i className='text-center text-2xl max-sm:text-xl fa-solid fa-server'></i>
-                        <h2 className=' max-sm:text-[12px] font-medium mt-2 mb-2'>
-                           Deploy & Development
-                        </h2>
-                        <p className='max-sm:text-xs'>
-                           Deploying your dreams into real world with trending
-                           technologies.
-                        </p>
-                     </div>
+                     {SERVICES.map((value, index) => (
+                        <div
+                           key={index}
+                           className=' flex text-center flex-col w-[14rem] max-sm:w-[11rem] m-4 border border-gray-500 rounded-md p-4'
+                        >
+                           {value.icon}
+                           <h2 className='font-medium mt-2 max-sm:text-sm mb-2'>
+                              {value.name}
+                           </h2>
+                           <p className='max-sm:text-xs'>{value.desc}</p>
+                        </div>
+                     ))}
                   </div>
                </div>
             </div>
@@ -237,12 +211,11 @@ function App() {
                         type='checkbox'
                         checked={theme === 'dark'}
                         onChange={toggleTheme}
-                        value=''
                         className='sr-only peer'
                      />
                      <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#F0EFEE] dark:peer-focus:ring-slate-700 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-slate-600"></div>
                      <span className='ms-3 text-sm font-medium text-gray-900 dark:text-gray-300'>
-                        Dark Mode
+                        {theme === 'dark' ? 'Light Mode' : `Dark Mode`}
                      </span>
                   </label>
                </div>

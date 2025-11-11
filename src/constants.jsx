@@ -54,3 +54,34 @@ export const TECH_STACKS = [
       type: 'Stripe',
    },
 ];
+
+export const SERVICES = [
+   {
+      name: 'UX/UI',
+      icon: (
+         <i className='text-center max-sm:text-xl text-2xl fa-solid fa-paintbrush'></i>
+      ),
+      desc: 'Designing interfaces that are reliable, profitable and easy to use.',
+   },
+   {
+      name: 'Web & Mobile Apps',
+      icon: (
+         <i className='text-center text-2xl max-sm:text-xl fa-solid fa-laptop'></i>
+      ),
+      desc: 'Migrating ideas into real world web and mobile applications.',
+   },
+   {
+      name: 'Design & Creative',
+      icon: (
+         <i className='text-center text-2xl max-sm:text-xl fa-solid fa-paint-roller'></i>
+      ),
+      desc: 'Painting stunning designs which connects you with your costumers.',
+   },
+   {
+      name: 'Deploy & Development',
+      icon: (
+         <i className='text-center text-2xl max-sm:text-xl fa-solid fa-server'></i>
+      ),
+      desc: 'Deploying your dreams into real world with trending technologies.',
+   },
+];

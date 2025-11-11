@@ -1,13 +1,23 @@
 import { useState, useEffect } from 'react';
-function getFetchedCurrency(currency){
-    let [data, setData] = useState({});
-    useEffect(() => {
-        fetch(`https://api.exchangerate-api.com/v4/latest/${currency}`)
-        .then(response => response.json())
-        .then(data => setData(data.rates))
-    }, [currency])
+function getFetchedCurrency(currency) {
+   let [data, setData] = useState({});
+   useEffect(() => {
+      const controller = new AbortController();
+      fetch(`https://api.exchangerate-api.com/v4/latest/${currency}`, {
+         signal: controller.signal,
+      })
+         .then((response) => response.json())
+         .then((data) => setData(data.rates))
+         .catch((e) => {
+            if (e.message === 'signal is aborted without reason') return;
+         });
 
-    return data;
+      return () => {
+         controller.abort();
+      };
+   }, [currency]);
+
+   return data;
 }
 
 export default getFetchedCurrency;
