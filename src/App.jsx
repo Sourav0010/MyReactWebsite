@@ -1,15 +1,9 @@
 import { NavLink, Link } from 'react-router-dom';
-import getTheme from './context/Theme';
-import { useEffect } from 'react';
 import { SERVICES, TECH_STACKS } from './constants';
+import getTheme from './context/theme/ThemeContext';
 
 function App() {
    const { theme, toggleTheme } = getTheme();
-
-   useEffect(() => {
-      document.body.classList.remove('dark', 'light');
-      document.body.classList.add(theme);
-   }, [theme]);
 
    const handleClick = (e) => {
       window.navigator.clipboard.writeText('mohantysourav656@gmail.com');
@@ -40,7 +34,10 @@ function App() {
                   </div>
                   <div className='flex text-xs items-center gap-4'>
                      <p>
-                        <a href='https://www.linkedin.com/in/sourav-mohanty-link/'>
+                        <a
+                           target='_blank'
+                           href='https://www.linkedin.com/in/sourav-mohanty-link/'
+                        >
                            linkedin
                         </a>{' '}
                         /{' '}
@@ -186,38 +183,11 @@ function App() {
                         <p>Phone</p>
                      </button>
                      <button className=' flex flex-row max-sm:text-xs items-baseline w-fit gap-2 text-center justify-center cursor-pointer dark:bg-gray-900 dark:text-white dark:border-none dark:hover:bg-gray-500 bg-white text-black hover:bg-[#5a5a5a] hover:text-white border  px-4 py-2 rounded-full'>
-                        <NavLink to='/projects'>
+                        <NavLink to='projects'>
                            My Projects <i className='fa-solid fa-code'></i>
                         </NavLink>
                      </button>
                   </div>
-               </div>
-               <div className=' bg-slate-700 h-[1px] w-[90%] m-auto'></div>
-
-               <div className='flex items-center flex-wrap-reverse max-sm:text-center justify-between max-sm:justify-center max-sm:gap-2 max-sm:text-sm w-full px-20 mt-9 pb-9'>
-                  <p>
-                     <i className='fa-regular fa-copyright'></i> @Sourav Mohanty
-                     | 2025
-                  </p>
-                  <p>
-                     <a href='https://www.linkedin.com/in/sourav-mohanty-link/'>
-                        linkedin
-                     </a>{' '}
-                     / <a href='https://leetcode.com/u/Sourav010/'>LeetCode</a>{' '}
-                     / <a href='https://github.com/Sourav0010'>Github</a>
-                  </p>
-                  <label className='inline-flex  items-center cursor-pointer'>
-                     <input
-                        type='checkbox'
-                        checked={theme === 'dark'}
-                        onChange={toggleTheme}
-                        className='sr-only peer'
-                     />
-                     <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#F0EFEE] dark:peer-focus:ring-slate-700 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-slate-600"></div>
-                     <span className='ms-3 text-sm font-medium text-gray-900 dark:text-gray-300'>
-                        {theme === 'dark' ? 'Light Mode' : `Dark Mode`}
-                     </span>
-                  </label>
                </div>
             </div>
          </div>

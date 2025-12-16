@@ -1,9 +1,10 @@
-import { createBrowserRouter } from "react-router-dom";
-import Layout from "./Layouts/Layout";
-import App from "./App";
-import Projects from "./components/Projects";
-import Currencyconverter from "./components/Currencyconverter";
-import TodoList from "./components/TodoList";
+import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
+import Layout from './Layouts/Layout';
+import App from './App';
+import Projects from './components/Projects';
+import Currencyconverter from './components/Currencyconverter';
+import TodoList from './components/TodoList';
+import TodosProvider from './context/todos/TodosProvider';
 
 export const router = createBrowserRouter([
    {
@@ -11,24 +12,37 @@ export const router = createBrowserRouter([
       element: <Layout />,
       children: [
          {
-            path: '',
-            element: <App />,
+            index: true,
+            element: <Navigate to={'/home'} />,
          },
          {
-            path: 'projects',
-            element: <Layout />,
+            path: 'home',
             children: [
                {
-                  path: '',
-                  element: <Projects />,
+                  index: true,
+                  element: <App />,
                },
                {
-                  path: 'currency-converter',
-                  element: <Currencyconverter />,
-               },
-               {
-                  path: 'todo-list',
-                  element: <TodoList />,
+                  path: 'projects',
+                  element: <Outlet />,
+                  children: [
+                     {
+                        index: true,
+                        element: <Projects />,
+                     },
+                     {
+                        path: 'currency-converter',
+                        element: <Currencyconverter />,
+                     },
+                     {
+                        path: 'todo-list',
+                        element: (
+                           <TodosProvider>
+                              <TodoList />
+                           </TodosProvider>
+                        ),
+                     },
+                  ],
                },
             ],
          },

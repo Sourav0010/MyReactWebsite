@@ -1,11 +1,11 @@
 import React from 'react';
-import { useTodo } from '../../context/Todos';
+import { useTodo } from '../../context/todos/Todos';
 
 function Todo({ todo }) {
    let [editMode, setEditMode] = React.useState(false);
    let [todoMsg, setTodoMsg] = React.useState(todo.value);
-   const { removeTodo, editTodo, toggleComplete } = useTodo();
    let [completed, setCompleted] = React.useState(todo.completed);
+   const { editTodo, removeTodo, toggleTodo: toggleComplete } = useTodo();
 
    function remove() {
       removeTodo(todo.id);

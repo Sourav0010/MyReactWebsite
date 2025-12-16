@@ -1,18 +1,15 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import { ThemeProvider } from '../context/Theme'
+import { Outlet } from 'react-router-dom';
+import { ThemeProvider } from '../context/theme/ThemeProvider';
+import Footer from '../components/Footer';
 function Layout() {
-    const [theme, setTheme] = React.useState('light');
-    
-    const toggleTheme = () => {
-        setTheme((theme) => (theme === 'light' ? 'dark' : 'light'));
-    };
-
-  return (
-    <ThemeProvider value={{theme,toggleTheme}}>
-    <Outlet/>
-    </ThemeProvider>
-  )
+   return (
+      <ThemeProvider>
+         <div className='dark:bg-slate-800'>
+            <Outlet />
+            <Footer />
+         </div>
+      </ThemeProvider>
+   );
 }
 
-export default Layout
+export default Layout;

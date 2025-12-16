@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom';
+import getTheme from '../context/theme/ThemeContext';
+import { useLayoutEffect } from 'react';
 function Projects() {
+   const { theme } = getTheme();
+   useLayoutEffect(() => {
+      document.body.classList.remove('dark', 'light');
+      document.body.classList.add(theme);
+   }, [theme]);
+
    return (
       <>
-         <div className='w-full max-sm:h-full min-h-svh bg-white dark:bg-slate-900'>
+         <div className='w-full max-sm:h-full pb-5 min-h-svh bg-white dark:bg-slate-900'>
             <div className='bg-[#F0EFEE] dark:bg-slate-800 dark:text-white flex flex-col max-sm:p-6 max-sm:text-xs p-9 font-regular rounded-b-[6rem] max-sm:rounded-b-[2rem]'>
                <Link to={'/'}>
                   <i className='fa-solid fa-arrow-left dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-md ml-5 mt-4 cursor-pointer'></i>
@@ -28,7 +36,7 @@ function Projects() {
                   <div className='mt-4 flex items-center justify-center'>
                      <Link
                         className='bg-black dark:bg-slate-900 text-white px-4 py-2 max-sm:px-3 max-sm:py-2 max-sm:text-xs max-sm:rounded-md'
-                        to={'/projects/currency-converter'}
+                        to={'currency-converter'}
                      >
                         Visit Now{' '}
                         <i className='fa-solid fa-circle-arrow-up'></i>
@@ -67,7 +75,7 @@ function Projects() {
                   </p>
                   <div className='mt-4 flex items-center justify-center'>
                      <Link
-                        to={'/projects/todo-list'}
+                        to={'todo-list'}
                         className='bg-black dark:bg-slate-900 text-white px-4 py-2 max-sm:px-3 max-sm:py-2 max-sm:text-xs max-sm:rounded-md'
                      >
                         Visit Now{' '}
@@ -75,19 +83,6 @@ function Projects() {
                      </Link>
                   </div>
                </div>
-            </div>
-            <div className='flex items-center  dark:text-white dark:bg-slate-900 flex-wrap-reverse max-sm:text-center justify-between max-sm:justify-center max-sm:gap-2 max-sm:text-sm w-full px-20 mt-20 pb-9'>
-               <p>
-                  <i className='fa-regular fa-copyright'></i> @Sourav Mohanty |
-                  2025
-               </p>
-               <p>
-                  <a href='https://www.linkedin.com/in/sourav-mohanty-link/'>
-                     linkedin
-                  </a>{' '}
-                  / <a href='https://leetcode.com/u/Sourav010/'>LeetCode</a> /{' '}
-                  <a href='https://github.com/Sourav0010'>Github</a>
-               </p>
             </div>
          </div>
       </>

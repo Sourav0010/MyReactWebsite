@@ -1,44 +1,27 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { TodoProvider } from '../context/Todos';
 import Todo from './todos-comp/Todo';
 import TodoForm from './todos-comp/TodoForm';
+import { useTodo } from '../context/todos/Todos';
+import { useMemo, useState } from 'react';
+
 function TodoList() {
-   let [todos, setTodos] = useState(() => {
-      const todos = JSON.parse(localStorage.getItem('todos'));
-      if (todos && todos.length > 0) {
-         return todos;
+   let { todos } = useTodo();
+
+   const [enabledSort, setEnableSort] = useState(false);
+   const [hideCompleted, setHideCompleted] = useState(false);
+
+   const sortedTodos = useMemo(() => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      if (hideCompleted) todos = todos.filter((todo) => !todo.completed);
+      if (enabledSort) {
+         return [...todos].reverse();
       } else {
-         return [];
+         return [...todos];
       }
-   });
-
-   const addTodo = (todo) => {
-      setTodos((prev) => [...prev, todo]);
-   };
-
-   const removeTodo = (id) => {
-      setTodos((prev) => prev.filter((item) => item.id !== id));
-   };
-   const editTodo = (id, todo) => {
-      setTodos((prev) => prev.map((item) => (item.id === id ? todo : item)));
-   };
-   const toggleComplete = (id) => {
-      setTodos((prev) =>
-         prev.map((item) =>
-            item.id === id ? { ...item, completed: !item.completed } : item
-         )
-      );
-   };
-
-   useEffect(() => {
-      localStorage.setItem('todos', JSON.stringify(todos));
-   }, [todos]);
+   }, [todos, enabledSort, hideCompleted]);
 
    return (
-      <TodoProvider
-         value={{ todos, addTodo, removeTodo, editTodo, toggleComplete }}
-      >
+      <>
          <div className='w-full h-screen  flex flex-col   dark:bg-slate-900'>
             <div className='bg-[#F0EFEE] dark:bg-slate-800 dark:text-white flex flex-col max-sm:p-6 max-sm:text-xs p-9 font-regular rounded-b-[6rem] max-sm:rounded-b-[2rem]'>
                <Link to={'..'}>
@@ -50,28 +33,45 @@ function TodoList() {
                   </h2>
                </div>
             </div>
-            <TodoForm />
+            <div className='flex flex-row items-center justify-center gap-3 pt-4'>
+               <TodoForm />
+            </div>
+            <div className='w-full flex items-center justify-center p-5 gap-5'>
+               <label
+                  className='text-sm font-medium text-gray-900 dark:text-gray-300'
+                  htmlFor='sort'
+               >{`Sort By ${enabledSort ? 'Asc' : 'Desc'}`}</label>
+               <button
+                  id='sort'
+                  onClick={() => setEnableSort((p) => !p)}
+                  className='dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-md  cursor-pointer'
+               >
+                  {enabledSort ? (
+                     <i className='fa-solid fa-sort-up' />
+                  ) : (
+                     <i className='fa-solid fa-sort-down' />
+                  )}
+               </button>
+               <label className='inline-flex  items-center cursor-pointer'>
+                  <span className='mr-3 text-sm font-medium text-gray-900 dark:text-gray-300'>
+                     {hideCompleted ? 'Show' : 'Hide'} Completed
+                  </span>
+                  <input
+                     checked={hideCompleted}
+                     onChange={(e) => setHideCompleted(e.target.checked)}
+                     type='checkbox'
+                     className='sr-only peer'
+                  />
+                  <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#F0EFEE] dark:peer-focus:ring-slate-700 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-slate-600"></div>
+               </label>
+            </div>
             <div className='w-full overflow-y-scroll h-full   dark:bg-slate-900  mt-4 gap-2 flex flex-col'>
-               {todos.map((todo) => (
+               {sortedTodos.map((todo) => (
                   <Todo key={todo.id} todo={todo} />
                ))}
             </div>
-
-            <div className='flex  items-center flex-wrap-reverse max-sm:text-center justify-between max-sm:justify-center max-sm:gap-2 max-sm:text-sm w-full px-20 mt-9 dark:bg-slate-900 dark:text-white pb-4'>
-               <p>
-                  <i className='fa-regular fa-copyright'></i> @Sourav Mohanty |
-                  2025
-               </p>
-               <p>
-                  <a href='https://www.linkedin.com/in/sourav-mohanty-link/'>
-                     linkedin
-                  </a>{' '}
-                  / <a href='https://leetcode.com/u/Sourav010/'>LeetCode</a> /{' '}
-                  <a href='https://github.com/Sourav0010'>Github</a>
-               </p>
-            </div>
          </div>
-      </TodoProvider>
+      </>
    );
 }
 

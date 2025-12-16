@@ -67,20 +67,6 @@ function Currencyconverter() {
                   Convert <i className='fa-solid fa-shuffle'></i>
                </button>
             </div>
-
-            <div className='flex items-center flex-wrap-reverse max-sm:text-center justify-between max-sm:justify-center max-sm:gap-2 max-sm:text-sm w-full py-4 mt-9 dark:bg-slate-900'>
-               <p>
-                  <i className='fa-regular fa-copyright'></i> @Sourav Mohanty |
-                  2025
-               </p>
-               <p>
-                  <a href='https://www.linkedin.com/in/sourav-mohanty-link/'>
-                     linkedin
-                  </a>{' '}
-                  / <a href='https://leetcode.com/u/Sourav010/'>LeetCode</a> /{' '}
-                  <a href='https://github.com/Sourav0010'>Github</a>
-               </p>
-            </div>
          </div>
       </div>
    );
