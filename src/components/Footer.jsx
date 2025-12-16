@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import getTheme from '../context/theme/ThemeContext';
+import { format } from 'date-fns';
 
 export default function Footer() {
    const { theme, toggleTheme } = getTheme();
@@ -14,8 +15,8 @@ export default function Footer() {
       <>
          <div className='dark:bg-slate-700 dark:text-white rounded-t-xl flex items-center flex-wrap-reverse max-sm:text-center justify-between max-sm:justify-center max-sm:gap-2 max-sm:text-sm w-full px-20 pt-9 pb-9'>
             <p>
-               <i className='fa-regular fa-copyright'></i> @Sourav Mohanty |
-               2025
+               <i className='fa-regular fa-copyright'></i> @Sourav Mohanty |{' '}
+               {format(new Date(), 'yyyy')}
             </p>
             <p>
                <a href='https://www.linkedin.com/in/sourav-mohanty-link/'>
