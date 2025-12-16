@@ -5,6 +5,7 @@ export const TODO_ACTIONS = {
    EDIT_TODO: 'EDIT_TODO',
    REMOVE_TODO: 'REMOVE_TODO',
    TOGGLE_TODO: 'TOGGLE_TODO',
+   IMPORT_TODO: 'IMPORT_TODO',
 };
 
 function reducer(state, { type, payload }) {
@@ -37,6 +38,8 @@ function reducer(state, { type, payload }) {
                return todo;
             }
          });
+      case TODO_ACTIONS.IMPORT_TODO:
+         return payload.todos;
    }
 }
 
@@ -62,6 +65,9 @@ export function useLocalStorageTodos(key, initialValue) {
    function toggleTodo(id) {
       dispatch({ type: TODO_ACTIONS.TOGGLE_TODO, payload: { id } });
    }
+   function importTodos(todos) {
+      dispatch({ type: TODO_ACTIONS.IMPORT_TODO, payload: { todos } });
+   }
    useEffect(() => {
       localStorage.setItem(key, JSON.stringify(state));
    }, [state, key]);
@@ -72,5 +78,6 @@ export function useLocalStorageTodos(key, initialValue) {
       removeTodo,
       editTodo,
       toggleTodo,
+      importTodos,
    };
 }

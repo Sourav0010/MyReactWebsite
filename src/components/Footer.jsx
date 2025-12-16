@@ -8,7 +8,6 @@ export default function Footer() {
    useEffect(() => {
       document.body.classList.remove('dark', 'light');
       document.body.classList.add(theme);
-      console.log(theme);
    }, [theme]);
 
    return (

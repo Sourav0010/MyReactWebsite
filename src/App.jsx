@@ -62,7 +62,7 @@ function App() {
                </div>
                <div className='py-32 flex flex-col items-center'>
                   <div className='relative w-[24rem] max-sm:w-[13rem]'>
-                     <div className=' m-auto  w-28 h-28 dark:border-white dark:border dark:border-4  rounded-full max-sm:w-16 max-sm:h-16 overflow-hidden'>
+                     <div className=' m-auto  w-28 h-28 dark:border-white  dark:border-4  rounded-full max-sm:w-16 max-sm:h-16 overflow-hidden'>
                         <img src='https://i.ibb.co/tCdPhPx/profile.jpg' />
                      </div>
                      <div className=' absolute right-0 dark:bg-slate-700  bg-white p-2 rounded-md top-0'>
