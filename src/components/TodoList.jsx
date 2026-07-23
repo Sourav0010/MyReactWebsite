@@ -11,31 +11,8 @@ function TodoList() {
    const [enabledSort, setEnableSort] = useState(false);
    const [hideCompleted, setHideCompleted] = useState(false);
 
-   const [isNewUser, setIsNewUser] = useState(() => {
-      const value = localStorage.getItem('USER_PREF');
-      if (!value) return true;
-      return JSON.parse(value);
-   });
-
    const [exportTodosModalOpen, setExportTodosModalOpen] = useState(false);
    const [importTodosModalOpen, setImportTodosModalOpen] = useState(false);
-   const [importTodos, setImportTodos] = useState('');
-   const [error, setError] = useState('');
-
-   useEffect(() => {
-      localStorage.setItem('USER_PREF', JSON.stringify(isNewUser));
-   }, [isNewUser]);
-
-   useEffect(() => {
-      const handler = (e) => {
-         if (e.key === 'Escape') {
-            setIsNewUser(false);
-         }
-      };
-      document.addEventListener('keydown', handler);
-
-      return () => document.removeEventListener('keydown', handler);
-   }, [isNewUser]);
 
    const sortedTodos = useMemo(() => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -49,96 +26,17 @@ function TodoList() {
 
    return (
       <>
-         <Modal isOpen={isNewUser} onClose={() => setIsNewUser(false)}>
-            <div className='flex items-center justify-center flex-col gap-2'>
-               <h2 className='text-red-500 text-2xl font-medium'>Desclimer</h2>
-               <p className='max-w-md'>
-                  We are storing all the data in the local-storage so don&apos;t
-                  clear data of browser other wise data loss may happen.
-               </p>
-               <button
-                  onClick={() => setIsNewUser(false)}
-                  className='dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-md  cursor-pointer ml-auto'
-               >
-                  Ok
-               </button>
-            </div>
-         </Modal>
-         <Modal
-            isOpen={exportTodosModalOpen}
-            onClose={() => setExportTodosModalOpen(false)}
-         >
-            <div className='flex items-center justify-center flex-col gap-4'>
-               <button
-                  onClick={() => {
-                     setExportTodosModalOpen(false);
-                  }}
-                  className='cursor-pointer ml-auto'
-               >
-                  <svg
-                     xmlns='http://www.w3.org/2000/svg'
-                     height='24px'
-                     viewBox='0 -960 960 960'
-                     width='24px'
-                     className='dark:fill-white fill-black'
-                  >
-                     <path d='m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z' />
-                  </svg>
-               </button>
-               <textarea className='dark:bg-slate-800 w-[70vw] h-[70vh] resize-none overflow-y-auto border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500'>
-                  {JSON.stringify(sortedTodos)}
-               </textarea>
-            </div>
-         </Modal>
-         <Modal
-            isOpen={importTodosModalOpen}
-            onClose={() => setImportTodosModalOpen(false)}
-         >
-            <div className='flex items-center justify-center flex-col gap-4'>
-               <button
-                  onClick={() => {
-                     setImportTodosModalOpen(false);
-                  }}
-                  className='cursor-pointer ml-auto'
-               >
-                  <svg
-                     xmlns='http://www.w3.org/2000/svg'
-                     height='24px'
-                     viewBox='0 -960 960 960'
-                     width='24px'
-                     className='dark:fill-white fill-black'
-                  >
-                     <path d='m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z' />
-                  </svg>
-               </button>
-               <textarea
-                  value={importTodos}
-                  onChange={(e) => {
-                     setImportTodos(e.target.value);
-                     setError('');
-                  }}
-                  placeholder='Paste your todos here to import'
-                  className='dark:bg-slate-800 w-[70vw] h-[70vh] resize-none overflow-y-auto border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500'
-               ></textarea>
-               {error && <p className='text-red-500'>{error}</p>}
-               <button
-                  onClick={() => {
-                     setError('');
-                     try {
-                        const todos = JSON.parse(importTodos);
-                        setTodos(todos);
-                        setImportTodos('');
-                        setImportTodosModalOpen(false);
-                     } catch (error) {
-                        setError('Error while parsing todos!');
-                     }
-                  }}
-                  className='dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-md  cursor-pointer ml-auto'
-               >
-                  Import
-               </button>
-            </div>
-         </Modal>
+         <NewUserModal />
+         <ExportTodosModal
+            exportTodosModalOpen={exportTodosModalOpen}
+            setExportTodosModalOpen={setExportTodosModalOpen}
+            sortedTodos={sortedTodos}
+         />
+         <ImportTodosModal
+            importTodosModalOpen={importTodosModalOpen}
+            setImportTodosModalOpen={setImportTodosModalOpen}
+            setTodos={setTodos}
+         />
          <div className='w-full h-screen  flex flex-col   dark:bg-slate-900'>
             <div className='bg-[#F0EFEE] dark:bg-slate-800 dark:text-white flex flex-col max-sm:p-6 max-sm:text-xs p-9 font-regular rounded-b-[6rem] max-sm:rounded-b-[2rem]'>
                <Link to={'..'}>
@@ -205,7 +103,151 @@ function TodoList() {
 
 export default TodoList;
 
-/*
+function NewUserModal() {
+   const [isNewUser, setIsNewUser] = useState(() => {
+      const value = localStorage.getItem('USER_PREF');
+      if (!value) return true;
+      return JSON.parse(value);
+   });
 
-[{"id":"2d08cbc8-4f68-4b93-bceb-d5897625dc43","value":"Hii","completed":false},{"id":"75b99414-4580-4bad-9bae-1761f70b5a51","value":"Hello","completed":false},{"id":"0ac3b95d-24f1-40ba-a8df-b9677a432816","value":"False","completed":false}]
-*/
+   useEffect(() => {
+      localStorage.setItem('USER_PREF', JSON.stringify(isNewUser));
+   }, [isNewUser]);
+
+   useEffect(() => {
+      const handler = (e) => {
+         if (e.key === 'Escape') {
+            setIsNewUser(false);
+         }
+      };
+      document.addEventListener('keydown', handler);
+
+      return () => document.removeEventListener('keydown', handler);
+   }, [isNewUser]);
+
+   return (
+      <Modal isOpen={isNewUser} onClose={() => setIsNewUser(false)}>
+         <div className='flex items-center justify-center flex-col gap-2'>
+            <h2 className='text-red-500 text-2xl font-medium'>Desclimer</h2>
+            <p className='max-w-md'>
+               We are storing all the data in the local-storage so don&apos;t
+               clear data of browser other wise data loss may happen.
+            </p>
+            <button
+               onClick={() => setIsNewUser(false)}
+               className='dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-md  cursor-pointer ml-auto'
+            >
+               Ok
+            </button>
+         </div>
+      </Modal>
+   );
+}
+
+function ExportTodosModal({
+   exportTodosModalOpen,
+   setExportTodosModalOpen,
+   sortedTodos,
+}) {
+   return (
+      <Modal
+         isOpen={exportTodosModalOpen}
+         onClose={() => setExportTodosModalOpen(false)}
+      >
+         <div className='flex items-center justify-center flex-col gap-4'>
+            <button
+               onClick={() => {
+                  setExportTodosModalOpen(false);
+               }}
+               className='cursor-pointer ml-auto'
+            >
+               <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  height='24px'
+                  viewBox='0 -960 960 960'
+                  width='24px'
+                  className='dark:fill-white fill-black'
+               >
+                  <path d='m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z' />
+               </svg>
+            </button>
+            {sortedTodos.length == 0 ? (
+               <div className='m-16 text-red-500'>
+                  <p>No Todos Available</p>
+               </div>
+            ) : (
+               <textarea className='dark:bg-slate-800 w-[70vw] h-[70vh] resize-none overflow-y-auto border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500'>
+                  {JSON.stringify(sortedTodos)}
+               </textarea>
+            )}
+         </div>
+      </Modal>
+   );
+}
+
+function ImportTodosModal({
+   importTodosModalOpen,
+   setImportTodosModalOpen,
+   setTodos,
+}) {
+   const [error, setError] = useState('');
+   const [importTodos, setImportTodos] = useState('');
+
+   return (
+      <Modal
+         isOpen={importTodosModalOpen}
+         onClose={() => setImportTodosModalOpen(false)}
+      >
+         <div className='flex items-center justify-center flex-col gap-4'>
+            <button
+               onClick={() => {
+                  setImportTodosModalOpen(false);
+               }}
+               className='cursor-pointer ml-auto'
+            >
+               <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  height='24px'
+                  viewBox='0 -960 960 960'
+                  width='24px'
+                  className='dark:fill-white fill-black'
+               >
+                  <path d='m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z' />
+               </svg>
+            </button>
+            <textarea
+               value={importTodos}
+               onChange={(e) => {
+                  setImportTodos(e.target.value);
+                  setError('');
+               }}
+               placeholder='Paste your todos here to import'
+               className='dark:bg-slate-800 w-[70vw] h-[70vh] resize-none overflow-y-auto border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500'
+            ></textarea>
+            {!error ? (
+               <p className='text-white'>
+                  Make sure to paste correct exported format
+               </p>
+            ) : (
+               <p className='text-red-500'>{error}</p>
+            )}
+            <button
+               onClick={() => {
+                  setError('');
+                  try {
+                     const todos = JSON.parse(importTodos);
+                     setTodos(todos);
+                     setImportTodos('');
+                     setImportTodosModalOpen(false);
+                  } catch (error) {
+                     setError('Error while parsing todos!');
+                  }
+               }}
+               className='dark:bg-white dark:text-black bg-black text-white px-4 py-2 rounded-md  cursor-pointer ml-auto'
+            >
+               Import
+            </button>
+         </div>
+      </Modal>
+   );
+}

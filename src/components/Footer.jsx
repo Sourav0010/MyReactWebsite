@@ -1,9 +1,20 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import getTheme from '../context/theme/ThemeContext';
 import { format } from 'date-fns';
 
 export default function Footer() {
    const { theme, toggleTheme } = getTheme();
+   const [time, setTime] = useState(() =>
+      format(new Date(), 'dd-MM-yyyy | HH:mm:ss'),
+   );
+
+   useEffect(() => {
+      const interval = setInterval(() => {
+         setTime(format(new Date(), 'dd-MM-yyyy | HH:mm:ss'));
+      }, 1000);
+
+      return () => clearInterval(interval);
+   }, []);
 
    useEffect(() => {
       document.body.classList.remove('dark', 'light');
@@ -17,6 +28,7 @@ export default function Footer() {
                <i className='fa-regular fa-copyright'></i> @Sourav Mohanty |{' '}
                {format(new Date(), 'yyyy')}
             </p>
+            <p>{time}</p>
             <p>
                <a href='https://www.linkedin.com/in/sourav-mohanty-link/'>
                   linkedin
